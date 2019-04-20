@@ -17,14 +17,14 @@ export class MyCounterComponent {
   }
 
   increment() {
-    this.store.dispatch(new Increment());
+    this.store.dispatch(new Increment(5));
   }
 
   decrement() {
-    this.store.dispatch(new Decrement());
+    this.store.dispatch(new Decrement(5));
   }
 
   reset() {
-    this.store.dispatch(new Reset());
+    this.store.dispatch(new Reset(0));
   }
 }
