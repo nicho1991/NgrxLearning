@@ -1,25 +1,49 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {
+  BrowserModule
+} from '@angular/platform-browser';
+import {
+  NgModule
+} from '@angular/core';
 
-import { AppComponent } from './app.component';
-import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './reducers';
-import { EffectsModule } from '@ngrx/effects';
-import { AppEffects } from './app.effects';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
+import {
+  AppComponent
+} from './app.component';
+import {
+  StoreModule
+} from '@ngrx/store';
+import {
+  EffectsModule
+} from '@ngrx/effects';
+import {
+  StoreDevtoolsModule
+} from '@ngrx/store-devtools';
+import {
+  environment
+} from '../environments/environment';
+
+
+
+import {
+  MyCounterComponent
+} from './my-counter/my-counter.component';
+import { counterReducer } from './Reducers/counter.reducer';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MyCounterComponent
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot(reducers, { metaReducers }),
-    EffectsModule.forRoot([AppEffects]),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
+    StoreModule.forRoot({
+      count: counterReducer
+    }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
